@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php';
-include '../includes/header.php';
+include '../includes/adminheader.php';
 
 // Diákok listázása
 $query = "SELECT * FROM diak";
@@ -20,21 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_student'])) {
     }
 }
 ?>
-
-<h1>Diákok kezelése</h1>
-
-<?php if (isset($success)) echo "<p>$success</p>"; ?>
-<?php if (isset($error)) echo "<p>$error</p>"; ?>
-
-<form method="POST" action="">
-    <label for="name">Név:</label>
-    <input type="text" name="name" required>
-    <label for="class">Osztály:</label>
-    <input type="text" name="class" required>
-    <label for="gender">Fiú:</label>
-    <input type="checkbox" name="gender" value="1">
-    <button type="submit" name="add_student">Diák hozzáadása</button>
-</form>
+ <div class="container">
 
 <h2>Diákok listája</h2>
 <table>
@@ -55,5 +41,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_student'])) {
         <?php endwhile; ?>
     </tbody>
 </table>
-
+        </div>
 <?php include '../includes/footer.php'; ?>

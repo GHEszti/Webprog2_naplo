@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php';
-include '../includes/header.php';
+include '../includes/adminheader.php';
 
 // Tantárgyak listázása
 $query = "SELECT * FROM targy";
@@ -19,19 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_subject'])) {
     }
 }
 ?>
-
-<h1>Tantárgyak kezelése</h1>
-
-<?php if (isset($success)) echo "<p>$success</p>"; ?>
-<?php if (isset($error)) echo "<p>$error</p>"; ?>
-
-<form method="POST" action="">
-    <label for="name">Tantárgy Név:</label>
-    <input type="text" name="name" required>
-    <label for="category">Kategória:</label>
-    <input type="text" name="category" required>
-    <button type="submit" name="add_subject">Tantárgy hozzáadása</button>
-</form>
+ <div class="container">
 
 <h2>Tantárgyak listája</h2>
 <table>
@@ -50,5 +38,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_subject'])) {
         <?php endwhile; ?>
     </tbody>
 </table>
-
+        </div>
 <?php include '../includes/footer.php'; ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php';
-include '../includes/header.php';
+include '../includes/adminheader.php';
 
 // Jegyek listázása
 $query = "SELECT jegy.*, diak.nev AS diak_nev, targy.nev AS targy_nev 
@@ -31,35 +31,7 @@ $studentsResult = $conn->query($studentsQuery);
 $subjectsQuery = "SELECT * FROM targy";
 $subjectsResult = $conn->query($subjectsQuery);
 ?>
-
-<h1>Jegyek kezelése</h1>
-
-<?php if (isset($success)) echo "<p>$success</p>"; ?>
-<?php if (isset($error)) echo "<p>$error</p>"; ?>
-
-<form method="POST" action="">
-    <label for="student_id">Diák:</label>
-    <select name="student_id" required>
-        <?php while ($row = $studentsResult->fetch_assoc()): ?>
-            <option value="<?php echo $row['id']; ?>"><?php echo $row['nev']; ?></option>
-        <?php endwhile; ?>
-    </select>
-
-    <label for="subject_id">Tantárgy:</label>
-    <select name="subject_id" required>
-        <?php while ($row = $subjectsResult->fetch_assoc()): ?>
-            <option value="<?php echo $row['id']; ?>"><?php echo $row['nev']; ?></option>
-        <?php endwhile; ?>
-    </select>
-
-    <label for="value">Érték:</label>
-    <input type="number" name="value" min="1" max="5" required>
-
-    <label for="type">Típus:</label>
-    <input type="text" name="type" required>
-
-    <button type="submit" name="add_grade">Jegy hozzáadása</button>
-</form>
+ <div class="container">
 
 <h2>Jegyek listája</h2>
 <table>
@@ -84,5 +56,5 @@ $subjectsResult = $conn->query($subjectsQuery);
         <?php endwhile; ?>
     </tbody>
 </table>
-
+        </div>
 <?php include '../includes/footer.php'; ?>
