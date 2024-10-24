@@ -19,8 +19,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="../public/index.php">Kezdőlap</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../public/login.php">Bejelentkezés</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../diak/diak_dashboard.php">Kezdőlap</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../diak/students.php">Diákok</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../diak/subjects.php">Tantárgyak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../diak/grades.php">Jegyek</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../public/login.php">Kijelentkezés</a></li>
+                    
                 </ul>
             </div>
         </div>

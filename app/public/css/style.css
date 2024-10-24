@@ -1,3 +1,37 @@
+.dashboard {
+    display: flex; /* Rugalmas elrendezés */
+    justify-content: space-around; /* Helyezze a kártyákat egyenlően */
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30%; /* A kártyák szélessége */
+    text-align: center;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.button:hover {
+    background: #0056b3;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -101,3 +135,5 @@ footer {
     width: 100%;
     margin-top: 20px;
 }
+
+

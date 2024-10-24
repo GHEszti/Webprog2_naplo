@@ -1,37 +1,63 @@
 <?php
 session_start();
-include '../includes/db.php';
-
+include '../includes/db.php'; // Adatbázis kapcsolat
+include '../includes/header.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = md5($_POST['password']); // Jelszó titkosítása
-    $query = "SELECT * FROM felhasznalo WHERE felhasznalo_nev='$username' AND jelszo='$password'";
-    $result = $conn->query($query);
+    $felhasznalonev = $_POST['felhasznalonev']; // Itt javítottam az űrlap mező nevét
+    $jelszo = $_POST['jelszo'];
 
-    if ($result->num_rows > 0) {
-        $_SESSION['user'] = $username;
-        header('Location: index.php');
+    // Felhasználó lekérdezése az adatbázisból
+    $stmt = $conn->prepare("SELECT * FROM felhasznalo WHERE felhasznalo_nev = ?"); // Itt is ellenőrizd az oszlop nevét
+    if ($stmt === false) {
+        die('Hiba az előkészített lekérdezésben: ' . $conn->error);
+    }
+
+    
+    $stmt->bind_param("s", $felhasznalonev);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $felhasznalo = $result->fetch_assoc();
+
+        // Jelszó ellenőrzése
+        if ($jelszo == $felhasznalo['jelszo']) {
+            // Felhasználói adatok session-be mentése
+            $_SESSION['felhasznalo_nev'] = $felhasznalo['felhasznalo_nev'];
+
+            // Felhasználói típus alapján átirányítás
+            switch ($felhasznalo['felhasznalo_nev']) {
+                case 'admin':
+                    header("Location: ../admin/dashboard.php");
+                    break;
+                case 'tanar':
+                    header("Location: ../tanar/tanar_dashboard.php");
+                    break;
+                case 'diak':
+                    header("Location: ../diak/diak_dashboard.php");
+                    break;
+                default:
+                    echo "Ismeretlen felhasználói típus!";
+                    break;
+            }
+        } else {
+            echo "Hibás jelszó!";
+        }
     } else {
-        $error = "Hibás felhasználónév vagy jelszó!";
+        echo "Nincs ilyen felhasználó!";
     }
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="utf-8">
-    <title>Bejelentkezés</title>
-</head>
-<body>
+
+<div class="container">
 <h1>Bejelentkezés</h1>
 <?php if (isset($error)) echo "<p>$error</p>"; ?>
 <form method="POST" action="">
-    <label for="username">Felhasználónév:</label>
-    <input type="text" name="username" required>
-    <label for="password">Jelszó:</label>
-    <input type="password" name="password" required>
+    <label for="felhasznalonev">Felhasználónév:</label>
+    <input type="text" name="felhasznalonev" id="felhasznalonev" required>
+    <label for="jelszo">Jelszó:</label>
+    <input type="password" name="jelszo" id="jelszo" required>
     <button type="submit">Bejelentkezés</button>
 </form>
-</body>
-</html>
+</div>
