@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php'; // Adatbázis kapcsolat
-include '../includes/adminheader.php';
+include '../includes/header.php';
 
 // Ellenőrizzük, hogy az id létezik-e a GET paraméterben
 if (!isset($_GET['id'])) {
@@ -52,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="hidden" name="subject_id" value="<?php echo $subject_id; ?>">
         <button type="submit">Igen, törlés</button>
     </form>
-    <a href="../admin/subject_list.php">Mégse</a>
+    <a href="../admin/subject_list.php" class="btn btn-outline-dark">Mégse</a>
 </div>
 
-<?php include '../includes/footer.php'; ?>

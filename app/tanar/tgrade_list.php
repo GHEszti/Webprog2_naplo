@@ -2,7 +2,7 @@
 session_start();
 // Adatbázis kapcsolat
 include '../includes/db.php';
-include '../includes/tanarheader.php';
+include '../includes/header.php';
 
 // Jegy hozzáadása
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_grade'])) {
@@ -61,8 +61,8 @@ $subjectsResult = $conn->query($subjectsQuery);
             <td><?php echo htmlspecialchars(date('Y-m-d', strtotime($row['datum']))); ?></td>
             <td><?php echo htmlspecialchars($row['tipus']); ?></td>
             <td>
-                <a href="tanar/edit_grades.php?id=<?php echo $row['id']; ?>">Módosítás</a>
-                <a href="tanar/delete_grades.php?id=<?php echo $row['id']; ?>">Törlés</a>
+                <a href="../tanar/edit_grades.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-success">Módosítás</a>
+                <a href="../tanar/delete_grades.php?id=<?php echo $row['id']; ?>"class="btn btn-outline-danger">Törlés</a>
             </td>
         </tr>
         <?php endwhile; ?>

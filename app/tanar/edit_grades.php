@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php'; // Adatbázis kapcsolat
-include '../includes/tanarheader.php';
+include '../includes/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $grade_id = $_POST['grade_id'];
@@ -49,6 +49,7 @@ $grade = $result->fetch_assoc();
         <input type="number" name="subject_id" value="<?php echo $grade['targyid']; ?>" required>
         
         <button type="submit">Módosítás</button>
+        <a href="../tanar/tgrade_list.php" class="btn btn-outline-dark">Mégse</a>
     </form>
 </div>
-<?php include '../includes/footer.php'; ?>
+

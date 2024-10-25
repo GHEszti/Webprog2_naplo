@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php';
-include '../includes/tanarheader.php';
+include '../includes/header.php';
 
 // Diákok lekérdezése az adatbázisból a legördülő listához
 $studentsQuery = "SELECT id, nev FROM diak";
@@ -62,4 +62,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Hozzáadás</button>
     </form>
 </div>
-<?php include '../includes/footer.php'; ?>
+

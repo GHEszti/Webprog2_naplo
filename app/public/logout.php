@@ -1,5 +1,12 @@
 <?php
 session_start();
-session_destroy();
-header('Location: index.php');
+// Minden session adat törlése
+session_unset(); 
+
+// Session teljes megsemmisítése
+session_destroy(); 
+
+// Visszairányítás a bejelentkezési oldalra
+header("Location: login.php");
+exit();
 ?>

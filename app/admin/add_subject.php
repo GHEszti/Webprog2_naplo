@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php';
-include '../includes/adminheader.php';
+include '../includes/header.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $subject_name = $_POST['subject_name'];
 
@@ -27,4 +27,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Hozzáadás</button>
     </form>
 </div>
-<?php include '../includes/footer.php'; ?>
+

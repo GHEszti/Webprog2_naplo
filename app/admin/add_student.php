@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php';
-include '../includes/adminheader.php';
+include '../includes/header.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $student_name = $_POST['student_name'];
 
@@ -28,4 +28,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
 </div>
 
-<?php include '../includes/footer.php'; ?>

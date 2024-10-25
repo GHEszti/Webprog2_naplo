@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php'; // Adatbázis kapcsolat
-include '../includes/adminheader.php';
+include '../includes/header.php';
 
 // Jegy ID lekérdezése
 $grade_id = $_GET['id'];
@@ -77,7 +77,7 @@ $subjectsResult = $conn->query($subjectsQuery);
         </select>
         
         <button type="submit">Módosítás</button>
+        <a href="../admin/grade_list.php" class="btn btn-outline-dark">Mégse</a>
     </form>
 </div>
 
-<?php include '../includes/footer.php'; ?>

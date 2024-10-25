@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php';
-include '../includes/tanarheader.php';
+include '../includes/header.php';
 
 // Diákok listázása
 $query = "SELECT * FROM diak";

@@ -1,7 +1,8 @@
 <?php
+session_start();
 // Adatbázis kapcsolat
 include '../includes/db.php';
-include '../includes/adminheader.php';
+include '../includes/header.php';
 
 // Diákok lekérdezése az adatbázisból
 $query = "SELECT * FROM diak";
@@ -27,8 +28,8 @@ $result = $conn->query($query);
                     <td><?php echo $row['osztaly']; ?></td>
                     <td>
                         <!-- Módosítás gomb, ahol az id átadásra kerül -->
-                        <a href="../admin/edit_student.php?id=<?php echo $row['id']; ?>">Módosítás</a>
-                        <a href="../admin/delete_student.php?id=<?php echo $row['id']; ?>">Törlés</a>
+                        <a href="../admin/edit_student.php?id=<?php echo $row['id']; ?>"class="btn btn-outline-success">Módosítás</a>
+                        <a href="../admin/delete_student.php?id=<?php echo $row['id']; ?>"class="btn btn-outline-danger">Törlés</a>
                     </td>
                 </tr>
             <?php endwhile; ?>

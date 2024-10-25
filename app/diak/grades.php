@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php';
-include '../includes/diakheader.php';
+include '../includes/header.php';
 
 // Jegyek listázása
 $query = "SELECT jegy.*, diak.nev AS diak_nev, targy.nev AS targy_nev 

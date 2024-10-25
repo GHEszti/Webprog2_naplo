@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php'; // Adatbázis kapcsolat
-include '../includes/adminheader.php';
+include '../includes/header.php';
 
 // Diák ID lekérdezése
 $student_id = $_GET['id'];
@@ -54,7 +54,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
         <button type="submit">Törlés</button>
     </form>
-    <a href="../admin/student_list.php">Vissza a diákok listájához</a>
+    <a href="../admin/student_list.php" class="btn btn-outline-dark">Vissza a diákok listájához</a>
 </div>
-
-<?php include '../includes/footer.php'; ?>

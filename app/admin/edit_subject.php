@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/db.php'; // Adatbázis kapcsolat
-include '../includes/adminheader.php';
+include '../includes/header.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $subject_id = $_POST['subject_id'];
     $subject_name = $_POST['subject_name'];
@@ -40,6 +40,6 @@ $subject = $result->fetch_assoc();
         <input type="text" name="subject_category" value="<?php echo $subject['kategoria']; ?>" required>
         
         <button type="submit">Módosítás</button>
+        <a href="../admin/subject_list.php" class="btn btn-outline-dark">Mégse</a>
     </form>
 </div>
-<?php include '../includes/footer.php'; ?>
