@@ -31,8 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->execute()) {
         echo "Diák módosítva!";
         // Itt lehet átirányítani a diákok listájára, ha szükséges
-        // header("Location: list_students.php");
-        // exit();
+        header("Location: student_list.php");
+        exit();
     } else {
         echo "Hiba a módosítás során: " . $stmt->error;
     }

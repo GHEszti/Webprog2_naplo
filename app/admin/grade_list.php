@@ -41,11 +41,11 @@ $subjectsResult = $conn->query($subjectsQuery);
 
 <div class="container">
     <h1>Jegyek listája</h1>
-    <table>
+    <table id="gradesTable" class="display">
         <thead>
             <tr>
                 <th>Diák neve</th>
-                <th>Tárgy neve</th>
+                <th>Tantárgy neve</th>
                 <th>Érték</th>
                 <th>Dátum</th>
                 <th>Típus</th>
@@ -53,21 +53,40 @@ $subjectsResult = $conn->query($subjectsQuery);
             </tr>
         </thead>
         <tbody>
-        <?php while ($row = $result->fetch_assoc()): ?>
-        <tr>
-            <td><?php echo htmlspecialchars($row['diak_nev']); ?></td>
-            <td><?php echo htmlspecialchars($row['targy_nev']); ?></td>
-            <td><?php echo htmlspecialchars($row['ertek']); ?></td>
-            <td><?php echo htmlspecialchars(date('Y-m-d', strtotime($row['datum']))); ?></td>
-            <td><?php echo htmlspecialchars($row['tipus']); ?></td>
-            <td>
-                <a href="../admin/edit_grade.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-success">Módosítás</a>
-                <a href="../admin/deletegrade.php?id=<?php echo $row['id']; ?>"class="btn btn-outline-danger">Törlés</a>
-            </td>
-        </tr>
-        <?php endwhile; ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($row['diak_nev']); ?></td>
+                    <td><?php echo htmlspecialchars($row['targy_nev']); ?></td>
+                    <td><?php echo htmlspecialchars($row['ertek']); ?></td>
+                    <td><?php echo htmlspecialchars(date('Y-m-d', strtotime($row['datum']))); ?></td>
+                    <td><?php echo htmlspecialchars($row['tipus']); ?></td>
+                    <td>
+                        <a href="../admin/edit_grade.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-success mb-2">Módosítás</a>
+                        <a href="../admin/deletegrade.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-danger">Törlés</a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
         </tbody>
     </table>
 </div>
 
+<script>
+    $(document).ready(function() {
+        $('#gradesTable').DataTable({
+            "language": {
+                "search": "Keresés:",
+                "lengthMenu": "Mutass _MENU_ bejegyzést",
+                "info": "Megjelenítve _START_ - _END_ / _TOTAL_ bejegyzés",
+                "paginate": {
+                    "first": "Első",
+                    "last": "Utolsó",
+                    "next": "Következő",
+                    "previous": "Előző"
+                }
+            }
+        });
+    });
+</script>
+
+<?php include '../includes/footer.php'; ?>
 <?php include '../includes/footer.php'; ?>

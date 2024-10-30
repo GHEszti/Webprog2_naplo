@@ -168,13 +168,39 @@ form button:hover {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 20px;
-    background: #007BFF;
-    color: white;
     border: none;
     border-radius: 5px;
     text-decoration: none;
 }
 
-.button:hover {
-    background: #0056b3;
+.newb{
+    background: rgb(74, 171, 114);
+    color: white;
+}
+.newb:hover{
+    background: #2d7a44;
+}
+
+.editb{
+    background: rgb(118, 136, 125);
+    color: white;
+}
+.editb:hover{
+    background: #57625a;
+}
+
+.deleteb{
+    background: rgb(58, 60, 59);
+    color: white;
+}
+.deleteb:hover{
+    background: #2c2b2b;
+}
+
+.header-logo {
+    width: 100px; /* A kívánt szélesség */
+    height: auto; /* Magasság arányosan állítódik */
+    max-height: 50px; /* Max magasság, hogy ne legyen túl nagy */
+    object-fit: contain; /* Megtartja az arányokat */
+    margin-right: 10px; /* Ha van hely az ikon és a szöveg között */
 }

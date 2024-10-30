@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $query = "INSERT INTO felhasznalo (nev, felhasznalo_nev, jelszo, jogosultsag) VALUES ('$name', '$username', '$password', '$role')";
     if ($conn->query($query) === TRUE) {
-        header('Location: login.php');
+        header('Location: index.php');
     } else {
         $error = "Regisztrációs hiba: " . $conn->error;
     }

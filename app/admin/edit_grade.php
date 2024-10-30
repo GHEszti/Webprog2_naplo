@@ -31,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     if ($stmt->execute()) {
         echo "Jegy módosítva!";
+        header("Location: grade_list.php");
+        exit();
     } else {
         echo "Hiba a módosítás során: " . $stmt->error;
     }

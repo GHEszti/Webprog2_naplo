@@ -2,13 +2,13 @@
 session_start();
 include '../includes/db.php'; // Adatbázis kapcsolat
 include '../includes/header.php';
-// Felhasználói típus
+//Felhasználói típus
 $tipus = $_SESSION['felhasznalo_nev'];
 require_once('../TCPDF-main/tcpdf.php'); // TCPDF betöltése
 
 // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
 if (!isset($_SESSION['felhasznalo_nev'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -80,17 +80,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="dashboard">
             <div class="card col-4">
                 <h2>Tárgyak kezelése</h2>
-                <a href="../diak/subjects.php" class="button">Tárgyak listázása</a>
+                <a href="../diak/subjects.php" class="newb button">Tárgyak listázása</a>
             </div>
 
             <div class="card col-4">
                 <h2>Diákok kezelése</h2>
-                <a href="../diak/students.php" class="button">Diákok listázása</a>
+                <a href="../diak/students.php" class="newb button">Diákok listázása</a>
             </div>
 
             <div class="card col-4">
                 <h2>Jegyek kezelése</h2>
-                <a href="../diak/grades.php" class="button">Jegyek listázása</a>
+                <a href="../diak/grades.php" class="newb button">Jegyek listázása</a>
             </div>
             
         </div>
